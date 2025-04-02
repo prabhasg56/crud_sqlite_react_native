@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { KeyboardAvoidingView, StyleSheet } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import CustumText from './CustomText';
-import { primaryColor } from '../../styles/GlobalStyles';
+import { dangerBtnColor, primaryColor } from '../../styles/GlobalStyles';
 
 const CustomTextInput = ({
     labelName,
@@ -38,8 +38,8 @@ const CustomTextInput = ({
                     numberOfLines={numberOfLines}
                     autoCapitalize={autoCapitalize}
                     textColor={primaryColor}
-                    outlineColor={primaryColor}
-                    activeOutlineColor={primaryColor}
+                    outlineColor={error? dangerBtnColor : primaryColor}
+                    activeOutlineColor={error? dangerBtnColor : primaryColor}
                     style={styles.input}
                     secureTextEntry={showPasswordText}
                     right={

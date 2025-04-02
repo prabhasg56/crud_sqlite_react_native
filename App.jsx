@@ -8,6 +8,8 @@ import Toast from 'react-native-toast-message';
 
 import MainComponents from './src/navigation/MainComponents';
 import { initDB } from './src/database/db';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
 
 function App() {
 
@@ -17,8 +19,10 @@ function App() {
 
   return (
     <>
-      <MainComponents />
-      <Toast />
+      <Provider store={store}>
+        <MainComponents />
+        <Toast />
+      </Provider>
     </>
   );
 }

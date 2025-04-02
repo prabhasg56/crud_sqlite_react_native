@@ -7,6 +7,7 @@ import BottomTabRoutes from './BottomTabRoutes';
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import LoginScreen from '../screens/Auth/LoginScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import AddEditScreen from '../screens/Items/AddEditScreen';
 
 
 const Stack = createStackNavigator();
@@ -15,6 +16,7 @@ export function ItemStack({ navigation, route }) {
     return (
         <Stack.Navigator initialRouteName='ItemsScreen'>
             <Stack.Screen name="ItemsScreen" component={ItemsScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="AddEditScreen" component={AddEditScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 }
