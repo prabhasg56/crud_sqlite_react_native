@@ -35,7 +35,7 @@ const AddEditScreen = ({ route, navigation }) => {
             maxLength: 500,
             disabled: false,
             placeholder: 'Enter Description',
-            autoCapitalize: "characters",
+            autoCapitalize: "none",
             numberOfLines: 2,
             multiline: true
         },

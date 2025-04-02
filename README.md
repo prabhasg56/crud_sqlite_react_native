@@ -1,97 +1,136 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native CRUD App (Offline Storage with SQLite & Redux)
 
-# Getting Started
+## 📌 Project Overview
+This is a simple **React Native** application that demonstrates:
+- **Offline data storage** using SQLite (`react-native-sqlite-storage` and `@react-native-async-storage/async-storage`).
+- **State management** using Redux.
+- **CRUD operations** (Create, Read, Update, Delete).
+- **Offline functionality** (the app works without an internet connection).
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🚀 Features
+- **Data Listing Screen** → Displays a list of stored items.
+- **Add / Edit Item Screen** → Allows users to add and update items.
+- **Delete Item** → Users can remove an item permanently.
+- **Offline Storage** → Uses SQLite for storing and retrieving data offline.
+- **Redux State Management** → Manages app state effectively.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 📥 Installation Guide
+### Prerequisites:
+- **Node.js** (v18 or later)
+- **React Native CLI** (Installed globally)
+- **Android Studio** (For running the app on a device/emulator)
 
-To start the Metro dev server, run the following command from the root of your React Native project:
-
+### 1️⃣ Clone the Repository
 ```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
+git clone https://github.com/prabhasg56/crud_sqlite_react_native.git
+cd crud_sqlite_react_native
 ```
 
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
+### 2️⃣ Install Dependencies
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+npm install
 ```
 
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
+### 3️⃣ Install SQLite Package (if not installed)
 ```sh
-bundle install
+npm install react-native-sqlite-storage
 ```
 
-Then, and every time you update your native dependencies, run:
-
+### 4️⃣ Link Dependencies (For iOS only)
 ```sh
-bundle exec pod install
+cd ios && pod install
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
+### 5️⃣ Run the Application
+#### For Android:
+After successfully installing, the app will be installed on your emulator or physical device. Simply open the application:
 ```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+npx react-native run-android
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### For iOS:
+May not work due to missing icons/permissions/functionality:
+```sh
+npx react-native run-ios
+```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
-## Step 3: Modify your app
+### Note For iOS Devices
+- Some elements, such as icons, may not work properly because they are not configured correctly.
 
-Now that you have successfully run the app, let's make changes!
+### Android SDK Configuration Issue
+If you are facing Android SDK configuration issues, follow these steps:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+#### Step 1: Locate the Android Folder
+Open your terminal or file explorer and navigate to the `android` folder inside your project directory:
+```sh
+cd android
+```
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+#### Step 2: Create the `local.properties` File
+If the `local.properties` file does not exist, create it manually inside the `android` folder.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+#### Step 3: Add Your SDK Directory
+Open the `local.properties` file in a text editor and add the following line, replacing `/Users/test/Library/Android/sdk` with your actual Android SDK path:
+```sh
+sdk.dir=/Users/YOUR_USERNAME/Library/Android/sdk  # macOS
+sdk.dir=C:\Users\YOUR_USERNAME\AppData\Local\Android\Sdk  # Windows
+```
+For Linux users, the path is typically:
+```sh
+sdk.dir=/home/YOUR_USERNAME/Android/Sdk
+```
 
-## Congratulations! :tada:
+#### Step 4: Save and Close
+Save the file and close the editor. Now, you should be able to build and run your React Native project without SDK-related errors.
 
-You've successfully run and modified your React Native App. :partying_face:
+### Troubleshooting
 
-### Now what?
+- If you encounter build issues, try clearing the cache:
+  ```sh
+  npx react-native start --reset-cache
+  ```
+- If dependencies are not installed properly, try:
+  ```sh
+  rm -rf node_modules && npm install
+  ```
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+---
 
-# Troubleshooting
+## 🛠 Tech Stack
+- **React Native CLI** - Framework for building mobile applications.
+- **Redux ToolKit** - State management for handling app state.
+- **SQLite** (`react-native-sqlite-storage`) - Local database for offline storage.
+- **React Navigation (Stack and Bottom Navigations)** - For screen navigation.
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+---
 
-# Learn More
+## 📌 Project Structure
+```
+📦 react-native-crud-app
+ ┣ 📂 src
+ ┃ ┣ 📂 components
+ ┃ ┣ 📂 database  # SQLite database functions
+ ┃ ┣ 📂 redux  # Redux actions & reducers
+ ┃ ┣ 📂 screens  # App screens (ItemsScreen, Add/Edit, etc.)
+ ┃ ┗ 📂 utils  # Utility functions
+ ┣ 📜 App.js  # Entry point
+ ┣ 📜 package.json
+ ┣ 📜 README.md  # Documentation
+```
 
-To learn more about React Native, take a look at the following resources:
+---
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## ❗ Known Limitations & Assumptions
+- The app does **not sync data to a remote server** (Only local SQLite storage).
+- Designed as a **demo project** (can be extended for production use).
+
+---
+
+## 📞 Support
+For any issues or suggestions, feel free to reach out at **prabhask856@gmail.com**.
+
+Happy Coding! 🚀
+
